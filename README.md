@@ -38,7 +38,6 @@ Cooperative
     Knowing that every person in your team needs to understand the code, how do you plan to approach the day-to-day development?
     That's part of the partnership, help each other as needed.
 
-
 Conflict Resolution
 
     What will your team do if one person is pulling all the weight while the other person is not contributing?

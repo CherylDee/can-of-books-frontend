@@ -24,6 +24,8 @@ span.navbar-brand {
   flex-wrap: wrap;
   width: 50%;
   margin:auto;
+  color:black;
+  font-weight:bold;
 }
 
 .about img {

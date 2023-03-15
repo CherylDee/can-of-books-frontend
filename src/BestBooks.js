@@ -45,7 +45,6 @@ class BestBooks extends React.Component {
         error: true,
         errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
       })
-      console.log('An error occurred: Type ' + error.response + ', ' + error.response.data)
 
       console.log(error.response.data)
     }
@@ -64,9 +63,8 @@ class BestBooks extends React.Component {
         error: true,
         errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
       })
-        console.log('An error occurred: Type ' + error.response + ', ' + error.response.data)
       
-      // console.log(error.response.data)
+      console.log(error.response.data)
     }
   }
 
@@ -96,7 +94,6 @@ class BestBooks extends React.Component {
         error: true,
         errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
       })
-      console.log('An error occurred: Type ' + error.response + ', ' + error.response.data)
 
       console.log(error.response.data);
     }
@@ -144,8 +141,6 @@ class BestBooks extends React.Component {
         <Button variant='secondary' onClick={this.handleShow}>Add a Book</Button>
         <BookFormModal show={this.state.showModal} handleClose={this.handleClose}
         handleBookSubmit={this.handleBookSubmit}/>
-
-        
        
       </>
     )

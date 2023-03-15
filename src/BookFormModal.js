@@ -23,6 +23,14 @@ export default class BookFormModal extends Component {
                 <Form.Label>Title</Form.Label>
                 <Form.Control type='text' />
               </Form.Group>
+              <Form.Group controlId='description'>
+                <Form.Label>Description</Form.Label>
+                <Form.Control type='text' />
+              </Form.Group>
+              <Form.Group controlId='author'>
+                <Form.Label>Author</Form.Label>
+                <Form.Control type='text' />
+              </Form.Group>
               <Form.Group controlId='status'>
                 <Form.Label>Status</Form.Label>
                 <Form.Check type='checkbox' label='Available' />

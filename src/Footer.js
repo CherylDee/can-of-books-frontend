@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
+import './styles.css';
 
 class Footer extends React.Component {
   render() {

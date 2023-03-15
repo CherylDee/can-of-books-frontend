@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { Carousel } from 'react-bootstrap/Carousel';
+import Carousel from 'react-bootstrap/Carousel';
 import bookImg from './images/book.png';
+import './styles.css'
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class BestBooks extends React.Component {
           {this.state.books.map((book, index) => {
             return (
               <Carousel.Item>
-              <img src={bookImg} alt={bookImg} />
+              <img src={bookImg} alt='' />
               <p>{book.title}</p>
               <p>{book.description}</p>
               {book.status ? (

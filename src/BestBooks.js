@@ -1,7 +1,7 @@
 import React from 'react';
-import React from 'react';
 import axios from 'axios';
-import Carousel from 'react-bootstrap/Carousel'
+import { Carousel } from 'react-bootstrap/Carousel';
+import bookImg from './images/book.png';
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class BestBooks extends React.Component {
         noBook: false,
       })
     } catch (error) {
-      console.log('there is an error: ', error.response.data)
+      console.log(error.response.data)
     }
   }
 
@@ -35,13 +35,29 @@ class BestBooks extends React.Component {
 
     return (
       <>
-        <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
+        <h2>My Get Rich Learning Library</h2>
 
         {this.state.books.length ? (
-          <p>Book Carousel coming soon</p>
-        ) : (
-          <h3>No Books Found :(</h3>
+          <Carousel >
+          {this.state.books.map((book, index) => {
+            return (
+              <Carousel.Item>
+              <img src={bookImg} alt={bookImg} />
+              <p>{book.title}</p>
+              <p>{book.description}</p>
+              {book.status ? (
+                <p>This book is available</p>
+              ) : (
+                <p>This book is unavailable</p>
+              )}
+              </Carousel.Item>
+               )
+          })}
+       </Carousel>
+       ) : (
+        <h3>No books found : </h3>
         )}
+       
       </>
     )
   }

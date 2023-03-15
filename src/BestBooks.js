@@ -44,6 +44,7 @@ class BestBooks extends React.Component {
       console.log(error.response.data)
     }
   }
+  
     deleteBook = async (id) => {
       try {
         let updateBooks= await axios.delete((`${process.env.REACT_APP_SERVER}/books/${id}`));

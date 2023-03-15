@@ -4,7 +4,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import bookImg from './images/book.png';
 import './styles.css';
 import { Button } from 'react-bootstrap';
-import BookFormModal from './bookFormModal';
+import BookFormModal from './BookFormModal';
 
 
 class BestBooks extends React.Component {
@@ -67,6 +67,7 @@ class BestBooks extends React.Component {
     }
     console.log('New Book from form:', newBook);
     this.postBook(newBook);
+    this.handleClose();
 
   }
 
@@ -118,7 +119,7 @@ class BestBooks extends React.Component {
         )}
 
         <Button variant='secondary' onClick={this.handleShow}>Add a Book</Button>
-        <BookFormModal show={this.state.showModal} handleClose={this.handleClose} 
+        <BookFormModal show={this.state.showModal} handleClose={this.handleClose}
         handleBookSubmit={this.handleBookSubmit}/>
        
       </>

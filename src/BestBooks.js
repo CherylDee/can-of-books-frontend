@@ -41,6 +41,12 @@ class BestBooks extends React.Component {
       })
 
     } catch (error) {
+      this.setstate ({
+        error: true,
+        errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
+      })
+      console.log('An error occurred: Type ' + error.response + ', ' + error.response.data)
+
       console.log(error.response.data)
     }
   }
@@ -54,17 +60,23 @@ class BestBooks extends React.Component {
         })
 
     } catch (error) {
-      console.log(error.response.data)
+      this.setState({
+        error: true,
+        errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
+      })
+        console.log('An error occurred: Type ' + error.response + ', ' + error.response.data)
+      
+      // console.log(error.response.data)
     }
   }
 
-    handleBookSubmit = (e) => {
-      e.preventDefault();
+    handleBookSubmit = (event) => {
+      event.preventDefault();
 
     let newBook = {
-      title: e.target.title.value,
-      description: e.target.description.value,
-      status: e.target.status.value
+      title: event.target.title.value,
+      description: event.target.description.value,
+      status: event.target.status.value
     }
     console.log('New Book from form:', newBook);
     this.postBook(newBook);
@@ -80,6 +92,12 @@ class BestBooks extends React.Component {
         })
       
     } catch (error) {
+      this.setState ({
+        error: true,
+        errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
+      })
+      console.log('An error occurred: Type ' + error.response + ', ' + error.response.data)
+
       console.log(error.response.data);
     }
    }

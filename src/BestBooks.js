@@ -2,31 +2,88 @@ import React from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 import bookImg from './images/book.png';
-import './styles.css'
+import './styles.css';
+import { Button } from 'react-bootstrap';
+import BookFormModal from './bookFormModal';
+
 
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      showModal: false,
     }
   }
+
+  handleClose = () => {
+    this.setState({
+      showModal: false,
+
+    })
+  }
+
+  handleShow = () => {
+    this.setState ({
+      showModal: true,
+
+    })
+  }
+
 
   /* TODO: Make a GET request to your API to fetch all the books from the database  */
   getBooks = async () => {
     try {
-      let results = await axios.get(`${process.env.REACT_APP_SERVER}/books`);
+      let bookResults = await axios.get(`${process.env.REACT_APP_SERVER}/books`);
       this.setState({
-        books: results.data,
+        books: bookResults.data,
         noBook: false,
       })
+
+    } catch (error) {
+      console.log(error.response.data)
+    }
+  }
+    deleteBook = async (id) => {
+      try {
+        let updateBooks= await axios.delete((`${process.env.REACT_APP_SERVER}/books/${id}`));
+        this.state.books.filter(book => book._id !== id);
+        this.setState({
+          books: updateBooks,
+        })
+
     } catch (error) {
       console.log(error.response.data)
     }
   }
 
+    handleBookSubmit = (e) => {
+      e.preventDefault();
 
-  componentDidMount() {
+    let newBook = {
+      title: e.target.title.value,
+      description: e.target.description.value,
+      status: e.target.status.value
+    }
+    console.log('New Book from form:', newBook);
+    this.postBook(newBook);
+
+  }
+
+    postBook = async (bookObj) => {
+      try {
+        let createdBook = await axios.post((`${process.env.REACT_APP_SERVER}/books/${bookObj}`));
+        this.setState({
+          books: [...this.state.books, createdBook.data]
+        })
+      
+    } catch (error) {
+      console.log(error.response.data);
+    }
+   }
+
+  
+    componentDidMount() {
     this.getBooks();
   }
 
@@ -42,8 +99,9 @@ class BestBooks extends React.Component {
           <Carousel >
           {this.state.books.map((book, index) => {
             return (
-              <Carousel.Item>
-              <img src={bookImg} alt='' />
+              <Carousel.Item key={book.title + index}>
+                
+              <img src={bookImg} alt="books about getting tryin' to get rich" />
               <p>{book.title}</p>
               <p>{book.description}</p>
               {book.status ? (
@@ -58,6 +116,10 @@ class BestBooks extends React.Component {
        ) : (
         <h3>No books found : </h3>
         )}
+
+        <Button variant='secondary' onClick={this.handleShow}>Add a Book</Button>
+        <BookFormModal show={this.state.showModal} handleClose={this.handleClose} 
+        handleBookSubmit={this.handleBookSubmit}/>
        
       </>
     )

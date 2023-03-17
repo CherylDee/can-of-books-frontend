@@ -44,7 +44,6 @@ class BestBooks extends React.Component {
     } catch (error) {
       this.setState ({
         error: true,
-        errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
       })
 
       console.log(error.response.data)
@@ -62,9 +61,7 @@ class BestBooks extends React.Component {
     } catch (error) {
       this.setState({
         error: true,
-        errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
       })
-      
       console.log(error.response.data)
     }
   }
@@ -93,7 +90,6 @@ class BestBooks extends React.Component {
     } catch (error) {
       this.setState ({
         error: true,
-        errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
       })
 
       console.log(error.response.data);

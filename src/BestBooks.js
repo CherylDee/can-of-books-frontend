@@ -1,4 +1,3 @@
-/* eslint-disable no-lone-blocks */
 import React from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
@@ -32,29 +31,28 @@ class BestBooks extends React.Component {
   }
 
 
-
   /* TODO: Make a GET request to your API to fetch all the books from the database  */
   getBooks = async () => {
     try {
       let bookResults = await axios.get(`${process.env.REACT_APP_SERVER}/books`);
       this.setState({
-        books: bookResults.data,
-        noBook: false,
-      })
+        books: bookResults.data
+      },
+      console.log(this.state.books)
+      );
 
     } catch (error) {
-      this.setstate ({
+      this.setState ({
         error: true,
-        errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
       })
 
-      console.log(error.response.data)
+      console.error(error.response.data);
     }
   }
   
     deleteBook = async (id) => {
       try {
-        let updateBooks= await axios.delete((`${process.env.REACT_APP_SERVER}/books/${id}`));
+        let updateBooks= await axios.delete(`${process.env.REACT_APP_SERVER}/books/${id}`);
         this.state.books.filter(book => book._id !== id);
         this.setState({
           books: updateBooks,
@@ -63,12 +61,10 @@ class BestBooks extends React.Component {
     } catch (error) {
       this.setState({
         error: true,
-        errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
       })
-    
-      console.log(error.response.data)
+      console.error(error.response.data);
     }
-    }
+  }
 
     handleBookSubmit = (event) => {
       event.preventDefault();
@@ -86,7 +82,7 @@ class BestBooks extends React.Component {
 
     postBook = async (bookObj) => {
       try {
-        let createdBook = await axios.post((`${process.env.REACT_APP_SERVER}/books/${bookObj}`));
+        let createdBook = await axios.post(`${process.env.REACT_APP_SERVER}/books/${bookObj}`);
         this.setState({
           books: [...this.state.books, createdBook.data]
         })
@@ -94,62 +90,56 @@ class BestBooks extends React.Component {
     } catch (error) {
       this.setState ({
         error: true,
-        errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
+        
       })
-    
-      console.log(error.response.data);
+
+      console.error(error.response.data);
     }
    }
 
+  
     componentDidMount() {
     this.getBooks();
   }
 
-
   render() {
-  
+
     /* TODO: render all the books in a Carousel */
+    let booksArray = this.state.books.map((book, _id) => {
+      return (  <Carousel.Item key={_id}>
+                  {/* <Button variant="success" onClick={() => this.handleStartUpdating(book)}>Update Book</Button> */}
+                  <img src={bookImg} alt="books about getting tryin' to get rich" />
+              
+                  {/* <Button variant="danger" onClick={() => this.deleteBook(book._id)}>Delete Book</Button> */}
+                  <Carousel.Caption>
+                    <h4>{book.title}</h4>
+                    <h5>{book.status}</h5>
+                    <p>{book.description}</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+      )
+  });
 
-    {this.state.books.length ? (
-      <Carousel >
-      {this.state.books.map((book, index) => {
-        
-        return (
-          <Carousel.Item key={book.title + index}>
-            
-          <img src={bookImg} alt="books about getting tryin' to get rich" />
-          <p>{book.title}</p>
-          <p>{book.description}</p>
-          {book.status ? (
-            <p>This book is available</p>
-          ) : (
-            <p>This book is unavailable</p>
-          )}
+    return (
+      <>
+        <h2>The Get Rich Learning Library</h2>
 
-          <Carousel.Caption>
-            <Button onClick={() => { this.deleteBook(book._id) }}>Delete a Book</Button>
-          </Carousel.Caption>
-          </Carousel.Item>
-           )
-            })}
+        {this.state.books.length ? (
+          <Carousel variant='dark'>
+            {booksArray}
           </Carousel>
-          ) : (
-            <h3>No books found : </h3>
-            )}
-            
+        ) : (
+          <h3>No Books Found </h3>
+        )}
 
-            return (
-              <>
-                <h2>The Get Rich Learning Library</h2>
-        
-            <Button variant='secondary' onClick={this.handleShow}>Add a Book</Button>
-            <BookFormModal show={this.state.showModal} handleClose={this.handleClose}
-            handleBookSubmit={this.handleBookSubmit}/>
-          
-          </>
+       
+        <Button variant='secondary' onClick={this.handleShow}>Add a Book</Button>
+        <BookFormModal show={this.state.showModal} handleClose={this.handleClose}
+        handleBookSubmit={this.handleBookSubmit}/>
+       
+      </>
     )
   }
 }
-
 
 export default BestBooks;

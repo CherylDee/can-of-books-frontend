@@ -46,7 +46,7 @@ class BestBooks extends React.Component {
         error: true,
       })
 
-      console.error(error.respons.data);
+      console.error(error.response.data);
     }
   }
   
@@ -62,7 +62,7 @@ class BestBooks extends React.Component {
       this.setState({
         error: true,
       })
-      console.error(error.respons.data);
+      console.error(error.response.data);
     }
   }
 
@@ -93,7 +93,7 @@ class BestBooks extends React.Component {
         
       })
 
-      console.error(error.respons.data);
+      console.error(error.response.data);
     }
    }
 
@@ -122,7 +122,7 @@ class BestBooks extends React.Component {
 
     return (
       <>
-        <h2>My Get Rich Learning Library</h2>
+        <h2>The Get Rich Learning Library</h2>
 
         {this.state.books.length ? (
           <Carousel variant='dark'>
@@ -132,34 +132,7 @@ class BestBooks extends React.Component {
           <h3>No Books Found </h3>
         )}
 
-        {/* {this.state.books.length ? (
-          <Carousel >
-          {this.state.books.map((book, index) => {
-            return (
-              <Carousel.Item key={book.title + index}>
-                
-              <img src={bookImg} alt="books about getting tryin' to get rich" />
-              <p>{book.title}</p>
-              <p>{book.description}</p>
-              {book.status ? (
-                <p>This book is available</p>
-              ) : (
-                <p>This book is unavailable</p>
-              )}
-
-              <Carousel.Caption>
-                <Button onClick={() => { this.deleteBook(book._id) }}>Delete a Book</Button>
-              </Carousel.Caption>
-              </Carousel.Item>
-               )
-          })}
-       </Carousel>
-       ) : (
-        <h3>No books found : </h3>
-        )}
-        
-         */}
-
+       
         <Button variant='secondary' onClick={this.handleShow}>Add a Book</Button>
         <BookFormModal show={this.state.showModal} handleClose={this.handleClose}
         handleBookSubmit={this.handleBookSubmit}/>

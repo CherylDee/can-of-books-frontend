@@ -107,10 +107,33 @@ class BestBooks extends React.Component {
   render() {
 
     /* TODO: render all the books in a Carousel */
+    let booksArray = this.state.books.map((book, _id) => {
+      return (  <Carousel.Item key={_id}>
+                  {/* <Button variant="success" onClick={() => this.handleStartUpdating(book)}>Update Book</Button>
+                  <img src={bookImg} alt="books about getting tryin' to get rich" />
+              
+                  <Button variant="danger" onClick={() => this.deleteBook(book._id)}>Delete Book</Button> */}
+                  <Carousel.Caption>
+                    <h4>{book.title}</h4>
+                    <h5>{book.status}</h5>
+                    <p>{book.description}</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+      )
+  });
 
     return (
       <>
-        
+        <h2>My Get Rich Learning Library</h2>
+
+        {this.state.books.length ? (
+          <Carousel variant='dark'>
+            {booksArray}
+          </Carousel>
+        ) : (
+          <h3>No Books Found :(</h3>
+        )}
+
 
         {this.state.books.length ? (
           <Carousel >
@@ -138,7 +161,7 @@ class BestBooks extends React.Component {
         <h3>No books found : </h3>
         )}
         
-        <h2>My Get Rich Learning Library</h2>
+        
 
         <Button variant='secondary' onClick={this.handleShow}>Add a Book</Button>
         <BookFormModal show={this.state.showModal} handleClose={this.handleClose}

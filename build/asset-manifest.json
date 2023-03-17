@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b171a36c.css",
+    "main.js": "/static/js/main.5155f4c9.js",
+    "static/media/africa-bkg.jpg": "/static/media/africa-bkg.d6b06349c22817899140.jpg",
+    "static/media/book.png": "/static/media/book.ebce2a960a8aadeb14b8.png",
+    "static/media/coffee.png": "/static/media/coffee.52c910d6e0af5b4d942b.png",
+    "static/media/hulk.jpg": "/static/media/hulk.178482033f88f1fc9f29.jpg",
+    "index.html": "/index.html",
+    "main.b171a36c.css.map": "/static/css/main.b171a36c.css.map",
+    "main.5155f4c9.js.map": "/static/js/main.5155f4c9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b171a36c.css",
+    "static/js/main.5155f4c9.js"
+  ]
+}

@@ -134,10 +134,7 @@ class BestBooks extends React.Component {
           <h3>No Books Found </h3>
         )}
 
-
-
-
-        {this.state.books.length ? (
+        {/* {this.state.books.length ? (
           <Carousel >
           {this.state.books.map((book, index) => {
             return (
@@ -163,7 +160,7 @@ class BestBooks extends React.Component {
         <h3>No books found : </h3>
         )}
         
-        
+         */}
 
         <Button variant='secondary' onClick={this.handleShow}>Add a Book</Button>
         <BookFormModal show={this.state.showModal} handleClose={this.handleClose}

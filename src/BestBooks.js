@@ -36,12 +36,11 @@ class BestBooks extends React.Component {
     try {
       let bookResults = await axios.get(`${process.env.REACT_APP_SERVER}/books`);
       this.setState({
-        books: bookResults.data,
-        noBook: false,
-      })
+        books: bookResults.data
+      });
 
     } catch (error) {
-      this.setstate ({
+      this.setState ({
         error: true,
         errorMessage: 'An error occurred: Type ' + error.response + ', ' + error.response.data
       })
@@ -52,7 +51,7 @@ class BestBooks extends React.Component {
   
     deleteBook = async (id) => {
       try {
-        let updateBooks= await axios.delete((`${process.env.REACT_APP_SERVER}/books/${id}`));
+        let updateBooks= await axios.delete(`${process.env.REACT_APP_SERVER}/books/${id}`);
         this.state.books.filter(book => book._id !== id);
         this.setState({
           books: updateBooks,
@@ -84,7 +83,7 @@ class BestBooks extends React.Component {
 
     postBook = async (bookObj) => {
       try {
-        let createdBook = await axios.post((`${process.env.REACT_APP_SERVER}/books/${bookObj}`));
+        let createdBook = await axios.post(`${process.env.REACT_APP_SERVER}/books/${bookObj}`);
         this.setState({
           books: [...this.state.books, createdBook.data]
         })

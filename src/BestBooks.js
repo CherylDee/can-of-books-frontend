@@ -109,10 +109,10 @@ class BestBooks extends React.Component {
     /* TODO: render all the books in a Carousel */
     let booksArray = this.state.books.map((book, _id) => {
       return (  <Carousel.Item key={_id}>
-                  {/* <Button variant="success" onClick={() => this.handleStartUpdating(book)}>Update Book</Button>
+                  <Button variant="success" onClick={() => this.handleStartUpdating(book)}>Update Book</Button>
                   <img src={bookImg} alt="books about getting tryin' to get rich" />
               
-                  <Button variant="danger" onClick={() => this.deleteBook(book._id)}>Delete Book</Button> */}
+                  <Button variant="danger" onClick={() => this.deleteBook(book._id)}>Delete Book</Button>
                   <Carousel.Caption>
                     <h4>{book.title}</h4>
                     <h5>{book.status}</h5>
@@ -133,6 +133,8 @@ class BestBooks extends React.Component {
         ) : (
           <h3>No Books Found :(</h3>
         )}
+
+
 
 
         {this.state.books.length ? (

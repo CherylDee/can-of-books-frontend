@@ -38,7 +38,7 @@ class BestBooks extends React.Component {
       this.setState({
         books: bookResults.data
       },
-      console.log(this.state.books)
+      // console.log(this.state.books)
       );
 
     } catch (error) {
@@ -46,7 +46,7 @@ class BestBooks extends React.Component {
         error: true,
       })
 
-      console.error(error.response.data);
+      console.log(error.response.data);
     }
   }
   
@@ -62,7 +62,7 @@ class BestBooks extends React.Component {
       this.setState({
         error: true,
       })
-      console.error(error.response.data);
+      console.log(error.response.data);
     }
   }
 
@@ -93,7 +93,7 @@ class BestBooks extends React.Component {
         
       })
 
-      console.error(error.response.data);
+      console.log(error.response.data);
     }
    }
 

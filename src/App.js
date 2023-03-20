@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import BestBooks from './BestBooks';
 import About from './About';
+import './server';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
